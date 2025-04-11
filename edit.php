@@ -1,10 +1,20 @@
+<?php
+
+$conn = mysqli_connect("localhost", 'root', '', 'makannes');
+
+$res = mysqli_query($conn, "SELECT * FROM menu WHERE id=" . $_GET['id']);
+
+$menu = $res->fetch_assoc();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>makaNNES tambah</title>
+  <title>makaNNES edit</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
 
@@ -39,14 +49,16 @@
     </div>
   </nav>
 
-  <form action="tambah-post.php" method="post">
+  <form action="edit-post.php" method="post">
     <div class="container pb-5" id="search">
       <div class="row">
-        <h2 class="text-center mb-3">Tambah produk baru</h2>
+        <h2 class="text-center mb-3">Edit produk</h2>
+
+        <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
 
         <div class="col-md-4 mx-auto mb-3">
           <label for="name" class="form-label">Nama produk</label>
-          <input type="text" class="form-control" name="name" id="name" placeholder="Isi nama produk">
+          <input type="text" class="form-control" name="name" id="name" placeholder="Isi nama produk" value="<?= $menu['name'] ?>">
         </div>
 
         <div class="col-12"></div>
@@ -54,11 +66,11 @@
         <div class="col-md-4 mx-auto mb-3">
           <label for="price" class="form-label">Harga</label>
           <select class="form-select" name="price" id="price">
-            <option disabled selected>Pilih harga</option>
-            <option value="10-15">10rb - 15rb</option>
-            <option value="15-20">15rb - 20rb</option>
-            <option value="20-25">20rb - 25rb</option>
-            <option value="25-30">25rb - 30rb</option>
+            <option disabled>Pilih harga</option>
+            <option value="10-15" <?= $menu['price'] == "10-15" ? 'selected' : ''  ?>>10rb - 15rb</option>
+            <option value="15-20" <?= $menu['price'] == "15-20" ? 'selected' : ''  ?>>15rb - 20rb</option>
+            <option value="20-25" <?= $menu['price'] == "20-25" ? 'selected' : ''  ?>>20rb - 25rb</option>
+            <option value="25-30" <?= $menu['price'] == "25-30" ? 'selected' : ''  ?>>25rb - 30rb</option>
           </select>
         </div>
 
@@ -68,9 +80,9 @@
           <label for="location" class="form-label">Lokasi</label>
           <select class="form-select" name="location" id="location">
             <option disabled selected>Pilih lokasi</option>
-            <option value="banaran">Banaran</option>
-            <option value="patemon">Patemon</option>
-            <option value="sekaran">Sekaran</option>
+            <option value="banaran" <?= $menu['location'] == "banaran" ? 'selected' : ''  ?>>Banaran</option>
+            <option value="patemon" <?= $menu['location'] == "patemon" ? 'selected' : ''  ?>>Patemon</option>
+            <option value="sekaran" <?= $menu['location'] == "sekaran" ? 'selected' : ''  ?>>Sekaran</option>
           </select>
         </div>
 
@@ -78,14 +90,14 @@
 
         <div class="col-md-4 mx-auto mb-3">
           <label for="image" class="form-label">Gambar</label>
-          <input type="text" name="image" id="image" placeholder="Isi link gambar" class="form-control mb-3">
+          <input type="text" name="image" id="image" placeholder="Isi link gambar" class="form-control mb-3" value="<?= $menu['image'] ?>">
         </div>
 
         <div class="col-12"></div>
 
         <div class="col-md-4 mx-auto mb-3">
           <button type="submit" class="search-btn">
-            Tambahkan
+            Ubah
             <i class="bi bi-plus"></i>
           </button>
         </div>
