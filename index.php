@@ -106,6 +106,8 @@ if (isset($_GET['price']) && isset($_GET['location'])) {
                 <h5 class="card-title">
                   <?= $menu['name'] ?>
                 </h5>
+
+                <p><?= $menu['location'] ?></p>
               </div>
             </div>
           </div>

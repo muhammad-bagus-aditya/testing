@@ -68,6 +68,8 @@ while ($row = $res->fetch_assoc()) {
                   <?= $menu['name'] ?>
                 </h5>
 
+                <p><?= $menu['location'] ?></p>
+
                 <a href="edit.php?id=<?= $menu['id'] ?>">
                   <button class="btn btn-warning">Edit</button>
                 </a>
