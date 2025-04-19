@@ -59,7 +59,7 @@ while ($row = $res->fetch_assoc()) {
 
       <?php if (count($data) > 0): ?>
         <?php foreach ($data as $menu): ?>
-          <div class="col-md-3">
+          <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="card">
               <img src="<?= $menu['image'] ?>" class="card-img-top" alt="">
 
@@ -68,10 +68,41 @@ while ($row = $res->fetch_assoc()) {
                   <?= $menu['name'] ?>
                 </h5>
 
-                <p><?= $menu['location'] ?></p>
+                <table class="mb-3">
+                  <tbody>
+                    <tr>
+                      <td>
+                        Harga
+                      </td>
+                      <td class="ps-1">
+                        : Rp. <?= $menu['price'] ?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Lokasi
+                      </td>
+                      <td class="ps-1">
+                        : <?= $menu['location'] ?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        CP
+                      </td>
+                      <td class="ps-1">
+                        : <?= $menu['contact_person'] ?>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
-                <a href="edit.php?id=<?= $menu['id'] ?>">
-                  <button class="btn btn-warning">Edit</button>
+                <a href="<?= $menu['link'] ?>" class="btn btn-pink">
+                  Cek di Maps
+                </a>
+
+                <a href="edit.php?id=<?= $menu['id'] ?>" class="btn btn-warning">
+                  Edit
                 </a>
 
                 <form action="hapus.php?id=<?= $menu['id'] ?>" method="post" class="d-inline">
@@ -87,6 +118,8 @@ while ($row = $res->fetch_assoc()) {
 
     </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,10 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "makannes");
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-$res = mysqli_query($conn, 'DELETE FROM menu WHERE id=' . $_GET['id']);
+  $conn = mysqli_connect("localhost", "root", "", "makannes");
 
-header('location: admin.php');
+  $res = mysqli_query($conn, 'DELETE FROM menu WHERE id=' . $_GET['id']);
+
+  header('location: admin.php');
+}

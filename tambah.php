@@ -53,13 +53,7 @@
 
         <div class="col-md-4 mx-auto mb-3">
           <label for="price" class="form-label">Harga</label>
-          <select class="form-select" name="price" id="price">
-            <option disabled selected>Pilih harga</option>
-            <option value="10-15">10rb - 15rb</option>
-            <option value="15-20">15rb - 20rb</option>
-            <option value="20-25">20rb - 25rb</option>
-            <option value="25-30">25rb - 30rb</option>
-          </select>
+          <input type="text" placeholder="Isi harga" class="form-control" name="price" id="price" />
         </div>
 
         <div class="col-12"></div>
@@ -72,6 +66,20 @@
             <option value="patemon">Patemon</option>
             <option value="sekaran">Sekaran</option>
           </select>
+        </div>
+
+        <div class="col-12"></div>
+
+        <div class="col-md-4 mx-auto mb-3">
+          <label for="link" class="form-label">Link Maps</label>
+          <input type="url" placeholder="Isi link maps" class="form-control" name="link" id="link" />
+        </div>
+
+        <div class="col-12"></div>
+
+        <div class="col-md-4 mx-auto mb-3">
+          <label for="contact_person" class="form-label">Contact Person</label>
+          <input type="text" placeholder="Isi CP dari pengusaha" class="form-control" name="contact_person" id="contact_person" />
         </div>
 
         <div class="col-12"></div>
@@ -92,6 +100,8 @@
       </div>
     </div>
   </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

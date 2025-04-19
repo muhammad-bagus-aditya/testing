@@ -79,3 +79,14 @@ body {
   cursor: pointer;
   width: 100%;
 }
+
+.btn-pink {
+  background: rgb(238, 87, 238);
+  color: white;
+  cursor: pointer;
+}
+
+.btn-pink:hover {
+  background-color: rgb(218, 75, 208);
+  color: white;
+}
