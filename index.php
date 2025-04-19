@@ -2,6 +2,8 @@
 
 session_start();
 
+require_once "functions.php";
+
 $data = [];
 
 $price_range = [
@@ -24,8 +26,6 @@ $price_range = [
 ];
 
 if (isset($_GET['price']) && isset($_GET['location'])) {
-  $conn = mysqli_connect("localhost", "root", "", "makannes");
-
   $res = mysqli_query($conn, 'SELECT * FROM menu WHERE price >= ' . $price_range[$_GET['price']]['min'] . ' AND price <= ' . $price_range[$_GET['price']]['max'] . '  AND location = "' . $_GET['location'] . '"');
 
   while ($row = $res->fetch_assoc()) {

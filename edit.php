@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost", 'root', '', 'makannes');
+require_once "functions.php";
 
 $res = mysqli_query($conn, "SELECT * FROM menu WHERE id=" . $_GET['id']);
 

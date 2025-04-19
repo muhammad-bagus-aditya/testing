@@ -1,8 +1,8 @@
 <?php
 
-$data = [];
+require_once "functions.php";
 
-$conn = mysqli_connect("localhost", "root", "", "makannes");
+$data = [];
 
 $res = mysqli_query($conn, "SELECT * FROM menu");
 

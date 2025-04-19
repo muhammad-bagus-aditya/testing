@@ -2,9 +2,9 @@
 
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  $conn = mysqli_connect("localhost", "root", "", "makannes");
+require_once "functions.php";
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $res = mysqli_query($conn, 'SELECT * FROM admin WHERE username="' . $_POST['username'] . '" AND password="' . $_POST['password'] . '"');
   $user = $res->fetch_assoc();
 
