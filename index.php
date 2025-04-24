@@ -26,7 +26,7 @@ $price_range = [
 ];
 
 if (isset($_GET['price']) && isset($_GET['location'])) {
-  $res = mysqli_query($conn, 'SELECT * FROM menu WHERE price >= ' . $price_range[$_GET['price']]['min'] . ' AND price <= ' . $price_range[$_GET['price']]['max'] . '  AND location = "' . $_GET['location'] . '"');
+  $res = mysqli_query($conn, 'SELECT * FROM menu WHERE price >= ' . $price_range[$_GET['price']]['min'] . ' AND price < ' . $price_range[$_GET['price']]['max'] . '  AND location = "' . $_GET['location'] . '"');
 
   while ($row = $res->fetch_assoc()) {
     $data[] = $row;
@@ -51,41 +51,7 @@ if (isset($_GET['price']) && isset($_GET['location'])) {
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg ">
-    <div class="container">
-      <a href="index.php" class="navbar-brand">makaNNES</a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.php">Home</a>
-          </li>
-          <?php if (isset($_SESSION['user'])): ?>
-            <li class="nav-item">
-              <a class="nav-link" href="admin.php">Admin</a>
-            </li>
-          <?php else: ?>
-            <li class="nav-item d-block d-lg-none">
-              <a class="nav-link" href="login.php">Login</a>
-            </li>
-          <?php endif; ?>
-        </ul>
-      </div>
-
-      <ul class="navbar-nav d-none d-lg-block">
-        <?php if (!isset($_SESSION['user'])): ?>
-          <li class="nav-item">
-            <a class="nav-link" href="login.php">Login</a>
-          </li>
-        <?php endif; ?>
-      </ul>
-
-    </div>
-  </nav>
+  <?php require_once "navbar.php" ?>
 
   <div class="jumbotron">
     <div class="jumbotron-content">
@@ -101,10 +67,10 @@ if (isset($_GET['price']) && isset($_GET['location'])) {
                     <label for="price" class="form-label">Harga</label>
                     <select class="form-select" name="price" id="price">
                       <option disabled <?= isset($_GET['price']) ? '' : 'selected' ?>>Pilih harga</option>
-                      <option value="1" <?= isset($_GET['price']) && $_GET['price'] == "10-15" ? 'selected' : ''  ?>>10rb - 15rb</option>
-                      <option value="2" <?= isset($_GET['price']) && $_GET['price'] == "15-20" ? 'selected' : ''  ?>>15rb - 20rb</option>
-                      <option value="3" <?= isset($_GET['price']) && $_GET['price'] == "20-25" ? 'selected' : ''  ?>>20rb - 25rb</option>
-                      <option value="4" <?= isset($_GET['price']) && $_GET['price'] == "25-30" ? 'selected' : ''  ?>>25rb - 30rb</option>
+                      <option value="1" <?= isset($_GET['price']) && $_GET['price'] == "1" ? 'selected' : ''  ?>>10rb - 15rb</option>
+                      <option value="2" <?= isset($_GET['price']) && $_GET['price'] == "2" ? 'selected' : ''  ?>>15rb - 20rb</option>
+                      <option value="3" <?= isset($_GET['price']) && $_GET['price'] == "3" ? 'selected' : ''  ?>>20rb - 25rb</option>
+                      <option value="4" <?= isset($_GET['price']) && $_GET['price'] == "4" ? 'selected' : ''  ?>>25rb - 30rb</option>
                     </select>
                   </div>
 

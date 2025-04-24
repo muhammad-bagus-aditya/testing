@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once "functions.php";
 
 $res = mysqli_query($conn, "SELECT * FROM menu WHERE id=" . $_GET['id']);
@@ -24,30 +26,7 @@ $menu = $res->fetch_assoc();
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg ">
-    <div class="container">
-      <a href="index.php" class="navbar-brand">makaNNES</a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admin.php">Admin</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="tambah.php">Tambah</a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </nav>
+  <?php require_once "navbar.php" ?>
 
   <form action="edit-post.php" method="post">
     <div class="container pb-5" id="search">

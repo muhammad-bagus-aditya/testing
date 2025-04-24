@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once "functions.php";
 
 $data = [];
@@ -28,34 +30,15 @@ while ($row = $res->fetch_assoc()) {
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg ">
-    <div class="container">
-      <a href="index.php" class="navbar-brand">makaNNES</a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="admin.php">Admin</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="tambah.php">Tambah</a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </nav>
+  <?php require_once "navbar.php" ?>
 
   <div class="container pb-5" id="search">
     <div class="row">
-      <h2 class="text-center mb-3">Daftar semua menu</h2>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Daftar semua menu</h2>
+
+        <a href="tambah.php" class="btn btn-pink">Tambah menu</a>
+      </div>
 
       <?php if (count($data) > 0): ?>
         <?php foreach ($data as $menu): ?>
